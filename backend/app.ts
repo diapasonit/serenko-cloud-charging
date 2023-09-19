@@ -60,7 +60,7 @@ async function charge(account: string, charges: number): Promise<ChargeResult> {
                         retries -= 1
                     }
                 } else {
-                    return {isAuthorized: true, remainingBalance: currentBalance, charges: 0};
+                    return {isAuthorized: false, remainingBalance: currentBalance, charges: 0};
                 }
             } catch (error) {
                 await sleep(await backoff(NUMBER_OF_RETRIES - retries));
